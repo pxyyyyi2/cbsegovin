@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CBSE Result 2021</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        
+        .header {
+            background-color: #00c2cb;
+            color: white;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .logo {
+            width: 60px;
+            height: 60px;
+            margin-right: 10px;
+        }
+        
+        .header-text {
+            flex-grow: 1;
+        }
+        
+        .header-text h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        
+        .header-text h2 {
+            margin: 0;
+            font-size: 20px;
+        }
+        
+        .website {
+            text-align: right;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .print-link {
+            text-align: left;
+            padding: 5px 0;
+            font-size: 14px;
+        }
+        
+        .print-link a {
+            color: #5252e0;
+        }
+        
+        .result-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px 20px;
+            background-color: white;
+        }
+        
+        .result-title {
+            text-align: center;
+            color: #3a3dc4;
+            margin: 10px 0;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        .result-subtitle {
+            text-align: center;
+            color: #3a3dc4;
+            margin: 5px 0 20px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        .student-info {
+            margin-bottom: 20px;
+        }
+        
+        .info-row {
+            display: flex;
+            margin-bottom: 5px;
+            flex-wrap: wrap;
+        }
+        
+        .info-label {
+            width: 120px;
+            font-weight: bold;
+        }
+        
+        .info-value {
+            flex-grow: 1;
+            color: #555;
+        }
+        
+        .result-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 15px;
+        }
+        
+        .result-table th, .result-table td {
+            border: 1px solid #000;
+            padding: 8px;
+            text-align: center;
+        }
+        
+        .result-table th {
+            background-color: #0000cc;
+            color: white;
+        }
+        
+        .additional-subject {
+            background-color: #f0f0f0;
+        }
+        
+        .result-row {
+            background-color: #0000cc;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .grade-b1 {
+            background-color: #e6f7ff;
+        }
+        
+        .grade-c2 {
+            background-color: #fff0e6;
+        }
+        
+        .grade-b2 {
+            background-color: #e6f7ff;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 12px;
+            color: #666;
+        }
+        
+        /* Responsive styles for mobile */
+        @media screen and (max-width: 600px) {
+            .header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            
+            .header-text h1, .header-text h2 {
+                font-size: 18px;
+                text-align: center;
+            }
+            
+            .website {
+                text-align: center;
+                margin-top: 5px;
+                width: 100%;
+            }
+            
+            .result-title {
+                font-size: 16px;
+            }
+            
+            .result-subtitle {
+                font-size: 14px;
+            }
+            
+            .info-row {
+                flex-direction: column;
+                margin-bottom: 10px;
+            }
+            
+            .info-label {
+                width: 100%;
+                margin-bottom: 2px;
+            }
+            
+            .info-value {
+                width: 100%;
+            }
+            
+            .result-table {
+                font-size: 12px;
+            }
+            
+            .result-table th, .result-table td {
+                padding: 4px 2px;
+            }
+            
+            /* Make table scroll horizontally on small screens */
+            .result-container {
+                overflow-x: auto;
+            }
+        }
+        
+        /* Print styles */
+        @media print {
+            body {
+                background-color: white;
+            }
+            
+            .print-link {
+                display: none;
+            }
+            
+            .result-container {
+                max-width: 100%;
+                margin: 0;
+                padding: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="images.png" alt="CBSE Logo" class="logo">
+        <div class="header-text">
+            <h1>केंद्रीय माध्यमिक शिक्षा बोर्ड</h1>
+            <h2>Central Board of Secondary Education</h2>
+        </div>
+        <div class="website">
+            http://cbseresults.nic.in
+        </div>
+    </div>
+    
+    <div class="result-container">
+        <div class="print-link">
+            <a href="javascript:window.print()">Print this page</a>
+        </div>
+        
+        <div class="result-title">CENTRAL BOARD OF SECONDARY EDUCATION</div>
+        <div class="result-subtitle">Secondary School Examination (Class X) 2021</div>
+        
+        <div class="student-info">
+            <div class="info-row">
+                <div class="info-label">Roll No:</div>
+                <div class="info-value" id="displayRollNo">-</div>
+            </div>
+            <div class="info-row">
+                <div class="info-label">Candidate</div>
+                <div class="info-value" id="displayName">-</div>
+            </div>
+            <div class="info-row">
+                <div class="info-label">Mother's Name:</div>
+                <div class="info-value" id="displayMotherName">-</div>
+            </div>
+            <div class="info-row">
+                <div class="info-label">Father's Name:</div>
+                <div class="info-value" id="displayFatherName">-</div>
+            </div>
+            <div class="info-row">
+                <div class="info-label">Date of Birth:</div>
+                <div class="info-value" id="displayDOB">-</div>
+            </div>
+            <div class="info-row">
+                <div class="info-label">School's Name:</div>
+                <div class="info-value" id="displaySchool">-</div>
+            </div>
+        </div>
+        
+        <table class="result-table">
+            <tr>
+                <th>SUB CODE</th>
+                <th>SUB NAME</th>
+                <th>THEORY</th>
+                <th>IA/ PRACTICAL</th>
+                <th>TOTAL</th>
+                <th>POSITIONAL GRADE</th>
+            </tr>
+            <tr class="grade-b1">
+                <td>184</td>
+                <td>ENGLISH LNG & LIT.</td>
+                <td>062</td>
+                <td>020</td>
+                <td>082</td>
+                <td>B1</td>
+            </tr>
+            <tr class="grade-c2">
+                <td>085</td>
+                <td>HINDI COURSE-B</td>
+                <td>054</td>
+                <td>020</td>
+                <td>074</td>
+                <td>C2</td>
+            </tr>
+            <tr class="grade-b1">
+                <td>241</td>
+                <td>MATHEMATICS BASIC</td>
+                <td>056</td>
+                <td>020</td>
+                <td>076</td>
+                <td>B1</td>
+            </tr>
+            <tr class="grade-b1">
+                <td>086</td>
+                <td>SCIENCE</td>
+                <td>050</td>
+                <td>020</td>
+                <td>070</td>
+                <td>B1</td>
+            </tr>
+            <tr class="grade-b1">
+                <td>087</td>
+                <td>SOCIAL SCIENCE</td>
+                <td>064</td>
+                <td>020</td>
+                <td>084</td>
+                <td>B1</td>
+            </tr>
+        </table>
+        
+        <table class="result-table">
+            <tr>
+                <th colspan="6">ADDITIONAL SUBJECT</th>
+            </tr>
+            <tr class="grade-b2">
+                <td>004</td>
+                <td>Compute Application</td>
+                <td>061</td>
+                <td>020</td>
+                <td>081</td>
+                <td>B2</td>
+            </tr>
+            <tr class="result-row">
+                <td colspan="2">Overall Percentage</td>
+                <td colspan="4">80.55%</td>
+            </tr>
+        </table>
+        
+        <div class="footer">
+            Brought to you by National Informatics Centre
+        </div>
+    </div>
+    
+    <script>
+        // Update student information with data from localStorage
+        window.onload = function() {
+            // Get data from localStorage
+            var rollNo = localStorage.getItem("rollNumber");
+            var schoolNo = localStorage.getItem("schoolNumber");
+            var candidateName = localStorage.getItem("candidateName");
+            var fatherName = localStorage.getItem("fatherName");
+            var motherName = localStorage.getItem("motherName");
+            var dob = localStorage.getItem("dateOfBirth");
+            var admitId = localStorage.getItem("admitId");
+            
+            // Set display values (if available)
+            if (rollNo) document.getElementById('displayRollNo').textContent = rollNo;
+            if (candidateName) document.getElementById('displayName').textContent = candidateName;
+            if (fatherName) document.getElementById('displayFatherName').textContent = fatherName;
+            if (motherName) document.getElementById('displayMotherName').textContent = motherName;
+            if (dob) document.getElementById('displayDOB').textContent = dob;
+            if (schoolNo) document.getElementById('displaySchool').textContent = 'School No. ' + schoolNo;
+        }
+    </script>
+</body>
+</html>
